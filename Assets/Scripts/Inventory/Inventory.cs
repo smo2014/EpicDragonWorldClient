@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,6 +25,15 @@ public class Inventory : MonoBehaviour
 
         _player = MainManager.Instance.selectedCharacterData;
         ShowPlayerEquipment(_player);
+    }
+
+    public void CharacterItems(ArrayList itemList)
+    {
+        foreach (InventoryHolder items in itemList)
+        {
+
+            Debug.Log("ItemID: " + items.GetItemId() + " | Equiped: " + items.GetEquiped() + " | Amount: " + items.GetAmount() + " | Enchant: " + items.GetEnchant());
+        }
     }
 
     private void ShowPlayerEquipment(CharacterDataHolder player)

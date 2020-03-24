@@ -84,6 +84,9 @@ public class WorldManager : MonoBehaviour
 
             // Send enter world to Network.
             NetworkManager.ChannelSend(new EnterWorldRequest(MainManager.Instance.selectedCharacterData.GetName()));
+
+            // Send Character Inventory Request
+            NetworkManager.ChannelSend(new CharacterInventoryRequest(MainManager.Instance.selectedCharacterData.GetName()));
         }
     }
 

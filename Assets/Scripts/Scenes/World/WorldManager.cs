@@ -65,6 +65,9 @@ public class WorldManager : MonoBehaviour
             Destroy(activeCharacter.gameObject);
             activeCharacter = CharacterManager.Instance.CreateCharacter(MainManager.Instance.selectedCharacterData);
 
+            activeCharacter.gameObject.tag = "Player";
+            activeCharacter.gameObject.layer = 9;
+
             // Animations.
             activeCharacter.gameObject.AddComponent<AnimationController>();
 

@@ -9,6 +9,14 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
+/Assets/Animations/
+/Assets/Audio/
+/Assets/Enviroment/
+/Assets/Models/
+/Assets/Standard Assets/
+/Assets/TextMesh Pro/
+/Assets/UMA/
+/Assets/UMA Armor Sets/
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta

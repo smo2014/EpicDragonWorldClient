@@ -1,8 +1,8 @@
 ﻿/**
- * Author: Pantelis Andrianakis
- * Date: June 22nd 2019
- */
-public enum ItemSlot
+* Author: Pantelis Andrianakis
+* Date: June 22nd 2019
+*/
+public enum EquipmentItemSlot
 {
     NONE,
     HEAD,
@@ -14,3 +14,4 @@ public enum ItemSlot
     RIGHT_HAND,
     TWO_HAND
 }
+

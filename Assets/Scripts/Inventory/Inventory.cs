@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,100 +8,134 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory Instance { get; private set; }
 
+    [SerializeField] protected Item[] startingItems;
+    [SerializeField] Transform itemsParent;
+    [SerializeField] ItemSlot[] itemSlots;
 
-    public Image _headSlot;
-    public Image _chestSlot;
-    public Image _glovesSlot;
-    public Image _legsSlot;
-    public Image _bootsSlot;
+    public event Action<Item> OnItemRightClickedEvent;
 
-    CharacterDataHolder _player;
-
-    void Start()
+    public void Init()
     {
         if (Instance != null)
         {
             return;
         }
         Instance = this;
+        
+        for (int i=0; i < itemSlots.Length; i++)
+        {
+            itemSlots[i].OnRightClickEvent += OnItemRightClickedEvent;
+        }
 
-        _player = MainManager.Instance.selectedCharacterData;
-        ShowPlayerEquipment(_player);
+
+
+
+        for (int i =0; i < startingItems.Length; i++)
+        {
+//            Debug.Log("Item : " + items[i].Icon.name);
+        }
     }
-
+    // TODO: Add Inventory list from database
     public void CharacterItems(ArrayList itemList)
     {
-        foreach (InventoryHolder items in itemList)
+        
+        foreach (InventoryHolder inventoryItem in itemList)
         {
+           //Debug.Log("ItemID: " + inventoryItem.GetItemId() + " | Equiped: " + inventoryItem.GetEquiped() + " | Amount: " + inventoryItem.GetAmount() + " | Enchant: " + inventoryItem.GetEnchant());
+            string name = ItemData.GetItem(inventoryItem.GetItemId()).GetName();
+            //Sprite icon = Resources.Load<Sprite>("ItemIcons/" +ItemData.GetItem(inventoryItem.GetItemId()).GetRecipeFemale().ToString().Replace("_Recipe", ""));
+            Debug.Log("Item to add in Game DB: " + name/* + " ,icon: " +icon.name*/);
+            
+        }
 
-            Debug.Log("ItemID: " + items.GetItemId() + " | Equiped: " + items.GetEquiped() + " | Amount: " + items.GetAmount() + " | Enchant: " + items.GetEnchant());
+
+    }
+
+    private void OnValidate()
+    {
+        if (itemsParent != null)
+            itemSlots = itemsParent.GetComponentsInChildren<ItemSlot>();
+
+        SetStartingItems();
+    }
+
+    private void SetStartingItems()
+    {
+        int i = 0;
+        for (; i < startingItems.Length && i < itemSlots.Length; i++)
+        {                                                      
+            itemSlots[i].Item = Instantiate(startingItems[i]);
+        }
+
+        for (; i < itemSlots.Length; i++)
+        {
+            itemSlots[i].Item = null;
         }
     }
 
-    private void ShowPlayerEquipment(CharacterDataHolder player)
+    public bool AddItem(Item item)
     {
-        switch (player.GetRace())
+        for(int i=0; i < itemSlots.Length; i++)
         {
-            case 0: // Male Equipment
-                if (player.GetHeadItem() != 0)
-                {
-                    LoadSprite(_headSlot, ItemData.GetItem(player.GetHeadItem()).GetRecipeMale().ToString().Replace("_Recipe", ""));
-                }
-                if (player.GetChestItem() != 0)
-                {
-                    LoadSprite(_chestSlot, ItemData.GetItem(player.GetChestItem()).GetRecipeMale().ToString().Replace("_Recipe", ""));
-                }
-                if (player.GetHandsItem() != 0)
-                {
-                    LoadSprite(_glovesSlot, ItemData.GetItem(player.GetHandsItem()).GetRecipeMale().ToString().Replace("_Recipe", ""));
-                }
-                if (player.GetLegsItem() != 0)
-                {
-                    LoadSprite(_legsSlot, ItemData.GetItem(player.GetLegsItem()).GetRecipeMale().ToString().Replace("_Recipe", ""));
-                }
-                if (player.GetFeetItem() != 0)
-                {
-                    LoadSprite(_bootsSlot, ItemData.GetItem(player.GetFeetItem()).GetRecipeMale().ToString().Replace("_Recipe", ""));
-                }
-                break;
-
-            case 1: // Female Equipment
-                
-                if(player.GetHeadItem() != 0)
-                {
-                    LoadSprite(_headSlot, ItemData.GetItem(player.GetHeadItem()).GetRecipeFemale().ToString().Replace("_Recipe", ""));
-                }
-                if(player.GetChestItem() != 0)
-                {
-                    LoadSprite(_chestSlot, ItemData.GetItem(player.GetChestItem()).GetRecipeFemale().ToString().Replace("_Recipe", ""));
-                }
-                if (player.GetHandsItem() != 0)
-                {
-                    LoadSprite(_glovesSlot, ItemData.GetItem(player.GetHandsItem()).GetRecipeFemale().ToString().Replace("_Recipe", ""));
-                }
-                if (player.GetLegsItem() != 0)
-                {
-                    LoadSprite(_legsSlot, ItemData.GetItem(player.GetLegsItem()).GetRecipeFemale().ToString().Replace("_Recipe", ""));
-                }
-                if (player.GetFeetItem() != 0)
-                {
-                    LoadSprite(_bootsSlot, ItemData.GetItem(player.GetFeetItem()).GetRecipeFemale().ToString().Replace("_Recipe", ""));
-                }
-                break;
+            if(itemSlots[i].Item == null)
+            {
+                itemSlots[i].Item = item;
+                return true;
+            }
         }
+        return false;
+    }
+    
+    public bool RemoveItem(Item item)
+    {
+        for(int i=0; i < itemSlots.Length; i++)
+        {
+            if(itemSlots[i].Item == item)
+            {
+                itemSlots[i].Item = null;
+                return true;
+            }
+        }
+        return false;
     }
 
-    void LoadSprite(Image icon, string _iconName)
+    public Item RemoveItem(string itemID)
     {
-        Texture2D newSprite = Resources.Load<Texture2D>("ItemIcons/" + _iconName);
+        for(int i=0; i < itemSlots.Length; i++)
+        {
+            Item item = itemSlots[i].Item;
+            if(item != null && item.ID == itemID)
+            {
+                itemSlots[i].Item = null;
+                return item;
+            }
+        }
+        return null;
+    }
 
-        if (newSprite)
+    public bool IsFull()
+    {
+        for(int i=0; i < itemSlots.Length; i++)
         {
-            icon.sprite = Sprite.Create(newSprite, new Rect(0, 0, newSprite.width, newSprite.height), new Vector2());
+            if(itemSlots[i].Item == null)
+            { 
+                return false;
+            }
         }
-        else
+        return true;
+    }
+
+    public int ItemCount(string itemID)
+    {
+        int number = 0;
+
+        for (int i=0; i < itemSlots.Length; i++)
         {
-            Debug.Log("Sprite `" + _iconName + "` not found.");
+            if(itemSlots[i].Item.ID == itemID)
+            {
+                number++;
+            }
         }
+        return number;
     }
 }

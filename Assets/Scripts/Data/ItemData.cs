@@ -34,7 +34,7 @@ public class ItemData : MonoBehaviour
             }
 
             int itemId = int.Parse(values[0]);
-            ItemSlot itemSlot = (ItemSlot)Enum.Parse(typeof(ItemSlot), values[1]);
+            EquipmentItemSlot itemSlot = (EquipmentItemSlot)Enum.Parse(typeof(EquipmentItemSlot), values[1]);
             ItemType itemType = (ItemType)Enum.Parse(typeof(ItemType), values[2]);
             string name = values[3];
             string description = values[4];

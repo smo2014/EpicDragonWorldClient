@@ -11,6 +11,11 @@ public class StatTooltip : MonoBehaviour
 
     private StringBuilder sb = new StringBuilder();
 
+    public void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void ShowTooltip(CharacterStat stat, string statName)
     {
         StatNameText.text = GetStatTopText(stat, statName);

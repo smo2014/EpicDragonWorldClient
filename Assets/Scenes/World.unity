@@ -624,6 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 12448396}
+  tooltip: {fileID: 0}
 --- !u!114 &12448396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1341,6 +1342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 25393525}
+  tooltip: {fileID: 0}
 --- !u!114 &25393525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7876,6 +7878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 160553139}
+  tooltip: {fileID: 0}
 --- !u!114 &160553139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8114,6 +8117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 164091048}
+  tooltip: {fileID: 0}
 --- !u!114 &164091048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8577,7 +8581,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 360820755}
   m_HandleRect: {fileID: 360820754}
   m_Direction: 0
-  m_Value: -0.00008332465
+  m_Value: -0.000078116864
   m_Size: 0.99326223
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -14990,6 +14994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 309290719}
+  tooltip: {fileID: 0}
 --- !u!114 &309290719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15077,6 +15082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 309729115}
+  tooltip: {fileID: 0}
 --- !u!114 &309729115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19779,6 +19785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 393060296}
+  tooltip: {fileID: 0}
   EquipmentType: 9
 --- !u!114 &393060296
 MonoBehaviour:
@@ -20997,6 +21004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 429578906}
+  tooltip: {fileID: 0}
   EquipmentType: 7
 --- !u!114 &429578906
 MonoBehaviour:
@@ -21918,7 +21926,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee46dbf8be2dd94eb22add073251fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingItems: []
+  startingItems:
+  - {fileID: 11400000, guid: 1333bafb2c754f14a8a518a0928bfee3, type: 2}
+  - {fileID: 11400000, guid: c5fe9bf288c066143a54594f6f860d2e, type: 2}
+  - {fileID: 11400000, guid: fc26fd9e09ef01d47b5c93b3444343b5, type: 2}
+  - {fileID: 11400000, guid: 86b6ed742e64e584c8c2932ae4e27d99, type: 2}
+  - {fileID: 11400000, guid: 51b6145e4e155eb4a8c46d46967d1933, type: 2}
   itemsParent: {fileID: 497478776}
   itemSlots:
   - {fileID: 1389771840}
@@ -26162,6 +26175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 551888856}
+  tooltip: {fileID: 0}
 --- !u!114 &551888856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28843,6 +28857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 593330369}
+  tooltip: {fileID: 0}
 --- !u!114 &593330369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28930,6 +28945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 593799892}
+  tooltip: {fileID: 0}
   EquipmentType: 6
 --- !u!114 &593799892
 MonoBehaviour:
@@ -30039,6 +30055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 610908091}
+  tooltip: {fileID: 0}
 --- !u!114 &610908091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30781,6 +30798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 648958560}
+  tooltip: {fileID: 0}
 --- !u!114 &648958560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31142,6 +31160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 662815029}
+  tooltip: {fileID: 0}
 --- !u!114 &662815029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32265,6 +32284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 693107010}
+  tooltip: {fileID: 0}
 --- !u!114 &693107010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32798,6 +32818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 701268006}
+  tooltip: {fileID: 0}
 --- !u!114 &701268006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32805,7 +32826,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 701268003}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -32816,7 +32837,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f6336769cca7f4240876f0f65c9962ca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8326d27a98116b54cab141df6ffa5129, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -33259,6 +33280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 708824426}
+  tooltip: {fileID: 0}
 --- !u!114 &708824426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37707,6 +37729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 790554899}
+  tooltip: {fileID: 0}
 --- !u!114 &790554899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38278,6 +38301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 814334102}
+  tooltip: {fileID: 0}
 --- !u!114 &814334102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43050,6 +43074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 908132056}
+  tooltip: {fileID: 0}
 --- !u!114 &908132056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43057,7 +43082,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908132053}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -43068,7 +43093,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f6336769cca7f4240876f0f65c9962ca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 32d11e2752ec66b478645a98100517fd, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -46780,7 +46805,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 419061633}
   m_HandleRect: {fileID: 419061632}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -48619,8 +48644,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047332544}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1431.5065, y: -196.22467, z: -4578.241}
+  m_LocalRotation: {x: -0.012475359, y: 0.97638524, z: 0.20753706, w: 0.05869196}
+  m_LocalPosition: {x: 1562.6001, y: 35.311165, z: -277.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1470148734}
@@ -50000,6 +50025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 1074960135}
+  tooltip: {fileID: 0}
 --- !u!114 &1074960135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52118,6 +52144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 1136839193}
+  tooltip: {fileID: 0}
 --- !u!114 &1136839193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56625,6 +56652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 1229010990}
+  tooltip: {fileID: 0}
 --- !u!114 &1229010990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59021,6 +59049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 1278748281}
+  tooltip: {fileID: 0}
   EquipmentType: 0
 --- !u!114 &1278748281
 MonoBehaviour:
@@ -59472,6 +59501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 1288002870}
+  tooltip: {fileID: 0}
   EquipmentType: 5
 --- !u!114 &1288002870
 MonoBehaviour:
@@ -64269,6 +64299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 1389771841}
+  tooltip: {fileID: 0}
 --- !u!114 &1389771841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64276,7 +64307,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389771838}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -64356,6 +64387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 1389883768}
+  tooltip: {fileID: 0}
 --- !u!114 &1389883768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69586,6 +69618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 1512628081}
+  tooltip: {fileID: 0}
 --- !u!114 &1512628081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70150,6 +70183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 1528248077}
+  tooltip: {fileID: 0}
   EquipmentType: 2
 --- !u!114 &1528248077
 MonoBehaviour:
@@ -72744,6 +72778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 1593832383}
+  tooltip: {fileID: 0}
   EquipmentType: 3
 --- !u!114 &1593832383
 MonoBehaviour:
@@ -73709,6 +73744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 1609714427}
+  tooltip: {fileID: 0}
 --- !u!114 &1609714427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73716,7 +73752,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609714424}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -73727,7 +73763,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f6336769cca7f4240876f0f65c9962ca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 217c2e13cfad11f43a4f9f455a25b774, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -74267,6 +74303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 1615959711}
+  tooltip: {fileID: 0}
 --- !u!114 &1615959711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80279,6 +80316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 1780217376}
+  tooltip: {fileID: 0}
   EquipmentType: 1
 --- !u!114 &1780217376
 MonoBehaviour:
@@ -82111,6 +82149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 1822951422}
+  tooltip: {fileID: 0}
 --- !u!114 &1822951422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86512,6 +86551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 1928585479}
+  tooltip: {fileID: 0}
   EquipmentType: 8
 --- !u!114 &1928585479
 MonoBehaviour:
@@ -88217,6 +88257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 1962419590}
+  tooltip: {fileID: 0}
   EquipmentType: 4
 --- !u!114 &1962419590
 MonoBehaviour:
@@ -89190,6 +89231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 2001582133}
+  tooltip: {fileID: 0}
 --- !u!114 &2001582133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90653,6 +90695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 2030190129}
+  tooltip: {fileID: 0}
 --- !u!114 &2030190129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92239,6 +92282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 2066975765}
+  tooltip: {fileID: 0}
 --- !u!114 &2066975765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92393,6 +92437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 2067301249}
+  tooltip: {fileID: 0}
 --- !u!114 &2067301249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92400,7 +92445,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067301246}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -92411,7 +92456,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f6336769cca7f4240876f0f65c9962ca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f6e7a229a3719b418ddeef8160136bd, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -10,6 +10,11 @@ public class ItemTooltip : MonoBehaviour
 
     private StringBuilder sb = new StringBuilder();
 
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void ShowTooltip(EquippableItem item)
     {
         ItemNameText.text = item.ItemName;

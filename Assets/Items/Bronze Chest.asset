@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 946065e14fa078043b23a2f34503a8c6, type: 3}
   m_Name: Bronze Chest
   m_EditorClassIdentifier: 
-  id: 
-  ItemName: 
-  Icon: {fileID: 0}
+  id: 3edb70b73895bb646a6cd7eb07ce6b12
+  itemId: 2
+  ItemName: Bronze Chest
+  Icon: {fileID: 21300000, guid: 2c48a9a79f68e9d4c8e9f2f46253949f, type: 3}
   MaximumStacks: 1
-  EquipmentType: 0
+  EquipmentType: 2
   Rank: 0
-  EncantLvl: 0
-  Strength: 0
-  Agility: 0
+  EnchantLvl: 0
+  Strength: 3
+  Agility: 1
   Intelligence: 0
-  Vitality: 0
+  Vitality: 5
   StrengthPercentBonus: 0
   AgilityPercentBonus: 0
   IntelligencePercentBonus: 0
   VitalityPercentBonus: 0
-  EnchantLvl: 0

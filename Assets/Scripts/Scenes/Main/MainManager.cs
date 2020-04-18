@@ -40,6 +40,7 @@ public class MainManager : MonoBehaviour
     private void Start()
     {
         Instance = this;
+
         // Loading canvas should be enabled.
         loadingCanvas.enabled = true;
         // Initialize network manager.

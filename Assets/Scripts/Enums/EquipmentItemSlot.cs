@@ -10,6 +10,10 @@ public enum EquipmentItemSlot
     LEGS,
     HANDS,
     FEET,
+    EARRINGS,
+    BELT,
+    RING,
+    TALISMAN,
     LEFT_HAND,
     RIGHT_HAND,
     TWO_HAND

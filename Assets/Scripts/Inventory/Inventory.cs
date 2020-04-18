@@ -1,141 +1,100 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Inventory : MonoBehaviour
+public class Inventory : ItemContainer
 {
     public static Inventory Instance { get; private set; }
 
+    public ItemDatabase itemDatabase;
     [SerializeField] protected Item[] startingItems;
     [SerializeField] Transform itemsParent;
-    [SerializeField] ItemSlot[] itemSlots;
+    EquippableItem item;
 
-    public event Action<Item> OnItemRightClickedEvent;
-
-    public void Init()
+    protected override void OnValidate()
     {
-        if (Instance != null)
+        if(itemsParent != null)
+            itemsParent.GetComponentsInChildren(includeInactive: true, result: ItemSlots);
+
+        if (!Application.isPlaying)
         {
-            return;
+            SetStartingItems();
         }
-        Instance = this;
-        
-        for (int i=0; i < itemSlots.Length; i++)
-        {
-            itemSlots[i].OnRightClickEvent += OnItemRightClickedEvent;
-        }
-
-
-
-
-        for (int i =0; i < startingItems.Length; i++)
-        {
-//            Debug.Log("Item : " + items[i].Icon.name);
-        }
-    }
-    // TODO: Add Inventory list from database
-    public void CharacterItems(ArrayList itemList)
-    {
-        
-        foreach (InventoryHolder inventoryItem in itemList)
-        {
-           //Debug.Log("ItemID: " + inventoryItem.GetItemId() + " | Equiped: " + inventoryItem.GetEquiped() + " | Amount: " + inventoryItem.GetAmount() + " | Enchant: " + inventoryItem.GetEnchant());
-            string name = ItemData.GetItem(inventoryItem.GetItemId()).GetName();
-            //Sprite icon = Resources.Load<Sprite>("ItemIcons/" +ItemData.GetItem(inventoryItem.GetItemId()).GetRecipeFemale().ToString().Replace("_Recipe", ""));
-            Debug.Log("Item to add in Game DB: " + name/* + " ,icon: " +icon.name*/);
-            
-        }
-
 
     }
 
-    private void OnValidate()
+    protected override void Awake()
     {
-        if (itemsParent != null)
-            itemSlots = itemsParent.GetComponentsInChildren<ItemSlot>();
+        base.Awake();
 
+        itemDatabase = Resources.Load<ItemDatabase>("Item Database");
+        if (itemDatabase == null)
+            Debug.Log("I dont find Item Database");
+        
         SetStartingItems();
     }
 
-    private void SetStartingItems()
+    private void Start()
     {
-        int i = 0;
-        for (; i < startingItems.Length && i < itemSlots.Length; i++)
-        {                                                      
-            itemSlots[i].Item = Instantiate(startingItems[i]);
-        }
+        Instance = this;
+    }
 
-        for (; i < itemSlots.Length; i++)
+    public void SetStartingItems()
+    {
+        Clear();
+//        AddEquippmentItemInventory(1);
+    }
+
+    public void ItemList(ArrayList itemList)
+    {
+        foreach (InventoryHolder inventoryItem in itemList)
         {
-            itemSlots[i].Item = null;
+            int id = inventoryItem.GetItemId();
+            //            Debug.Log("ItemID: " + inventoryItem.GetItemId() + " | Equiped: " + inventoryItem.GetEquiped() + " | Amount: " + inventoryItem.GetAmount() + " | Enchant: " + inventoryItem.GetEnchant());
+
         }
     }
 
-    public bool AddItem(Item item)
+/*    public void AddEquippmentItemInventory(int id)
     {
-        for(int i=0; i < itemSlots.Length; i++)
-        {
-            if(itemSlots[i].Item == null)
-            {
-                itemSlots[i].Item = item;
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public bool RemoveItem(Item item)
-    {
-        for(int i=0; i < itemSlots.Length; i++)
-        {
-            if(itemSlots[i].Item == item)
-            {
-                itemSlots[i].Item = null;
-                return true;
-            }
-        }
-        return false;
-    }
+        item = new Item();
+        item.ID = itemDatabase.Item[id].ID;
+        item.ItemName = itemDatabase.Item[id].ItemName;
+        item.Icon = itemDatabase.Item[id].Icon;
+        item.MaximumStacksSize = 1;
+        item.Strength = itemDatabase.Item[id].Strength;
+        item.Agility = itemDatabase.Item[id].Agility;
+        item.Intelligence = itemDatabase.Item[id].Intelligence;
+        item.Vitality = itemDatabase.Item[id].Vitality;
+        item.EquipmentType = itemDatabase.Item[id].Itemtype;
 
-    public Item RemoveItem(string itemID)
-    {
-        for(int i=0; i < itemSlots.Length; i++)
-        {
-            Item item = itemSlots[i].Item;
-            if(item != null && item.ID == itemID)
-            {
-                itemSlots[i].Item = null;
-                return item;
-            }
-        }
-        return null;
+        AddItem(item);
     }
+ */           /*
+                // TODO: Add Inventory list from database
+                public void CharacterItems(ArrayList itemList)
+                {
+                    foreach (InventoryHolder inventoryItem in itemList)
+                    {
+                        Debug.Log("ItemID: " + inventoryItem.GetItemId() + " | Equiped: " + inventoryItem.GetEquiped() + " | Amount: " + inventoryItem.GetAmount() + " | Enchant: " + inventoryItem.GetEnchant());
 
-    public bool IsFull()
-    {
-        for(int i=0; i < itemSlots.Length; i++)
-        {
-            if(itemSlots[i].Item == null)
-            { 
-                return false;
-            }
-        }
-        return true;
+                        item.ItemID = inventoryItem.GetItemId();
+                        item.ItemName = ItemData.GetItem(inventoryItem.GetItemId()).GetName();
+                        item.Icon = sp;
+                        item.MaximumStacks = 1;
+                        item.EquipmentItemSlot = ItemData.GetItem(inventoryItem.GetItemId()).GetItemSlot();
+                        item.AgilityBonus = 1;
+                        item.IntelligenceBonus = 1;
+                        item.VitalityBonus = 1;
+                        item.StrengthBonus = 1;
+                        AddItem(item);
+
+                        inventoryList.Add(item);
+                        //string name = ItemData.GetItem(inventoryItem.GetItemId()).GetName();
+                        //int itemId = ItemData.GetItem(inventoryItem.GetItemId()).GetItemId();
+                        //Sprite icon = Resources.Load<Sprite>("ItemIcons/" +ItemData.GetItem(inventoryItem.GetItemId()).GetRecipeFemale().ToString().Replace("_Recipe", ""));
+                        //Debug.Log("Item to add in Game DB - Id: " + itemId + " Name: "+ name + " ,icon: " +icon.name);
+
+                    }
+                }
+            */
     }
-
-    public int ItemCount(string itemID)
-    {
-        int number = 0;
-
-        for (int i=0; i < itemSlots.Length; i++)
-        {
-            if(itemSlots[i].Item.ID == itemID)
-            {
-                number++;
-            }
-        }
-        return number;
-    }
-}

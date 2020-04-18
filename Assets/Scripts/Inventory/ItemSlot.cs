@@ -1,69 +1,53 @@
 ﻿using UnityEngine;
 using System;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
-public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+
+public class ItemSlot : BaseItemSlot, IBeginDragHandler, IEndDragHandler,IDragHandler, IDropHandler
 {
-    [SerializeField] protected Image Image;
-    [SerializeField] ItemTooltip tooltip;
+    public event Action<BaseItemSlot> OnBeginDragEvent;
+    public event Action<BaseItemSlot> OnEndDragEvent;
+    public event Action<BaseItemSlot> OnDragEvent;
+    public event Action<BaseItemSlot> OnDropEvent;
 
-    public event Action<Item> OnRightClickEvent;
+    private Color dragColor = new Color(1, 1, 1, 0.5f);
 
-    private Item _item;
-    public Item Item
+    public override bool CanAddStack(Item item, int amount = 1)
     {
-        get { return _item; }
-        set
-        {
-            _item = value;
-
-            if (_item == null)
-            {   
-                Image.enabled = false;
-            }
-            else
-            {
-                Image.sprite = _item.Icon;
-                Image.enabled = true;
-            }
-        }
+        return base.CanAddStack(item, amount) && Amount + amount <= item.MaximumStacks;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public override bool CanReceiveItem(Item item)
     {
-        if(eventData != null && eventData.button == PointerEventData.InputButton.Right)
-        {
-            if (OnRightClickEvent != null)
-            {
-
-                OnRightClickEvent(Item);
-            }
-            else
-            {
-                Debug.Log("===>" + Item);
-            }
-        }
+        return true;
     }
 
-    protected virtual void OnValidate()
+    public void OnBeginDrag(PointerEventData eventData)
     {
-        if (Image == null)
-            Image = GetComponent<Image>();
+        if (Item != null)
+            image.color = dragColor;
 
-        if (tooltip == null)
-            tooltip = FindObjectOfType<ItemTooltip>();
+        if (OnBeginDragEvent != null)
+            OnBeginDragEvent(this);
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnEndDrag(PointerEventData eventData)
     {
-        if(Item is EquippableItem)
-        {
-            tooltip.ShowTooltip((EquippableItem)Item);
-        }
+        if (Item != null)
+            image.color = normalColor;
+
+        if (OnEndDragEvent != null)
+            OnEndDragEvent(this);
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void OnDrag(PointerEventData eventData)
     {
-        tooltip.HideTooltip();
+        if (OnDragEvent != null)
+            OnDragEvent(this);
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (OnDropEvent != null)
+            OnDropEvent(this);
     }
 }

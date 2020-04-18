@@ -60,7 +60,6 @@ public class CharacterSelectionManager : MonoBehaviour
         {
             // Make sure information from the server is received.
         }
-
         // Show last selected character.
         if (MainManager.Instance.characterList.Count > 0)
         {

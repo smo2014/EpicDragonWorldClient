@@ -5,8 +5,6 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance { get; private set; }
 
-    public TabGroup tabGroup;
-
     private const int LAYER_DEFAULT = 0;
     private const int LAYER_DISPLAY = 12;
     private const float TURN = 360;

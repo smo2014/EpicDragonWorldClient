@@ -13,7 +13,7 @@ public class Item : ScriptableObject
     public int itemId; // server Item Id
 
     public string ItemName;
-    public Sprite Icon;
+    public Sprite Icon; // TODO Change Icon by sex
     [Range(1,999)]
     public int MaximumStacks = 1;
     protected static readonly StringBuilder sb = new StringBuilder();

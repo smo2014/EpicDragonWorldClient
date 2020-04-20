@@ -7,6 +7,7 @@ public class BaseItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
 {
     [SerializeField] protected Image image;
     [SerializeField] protected Text amountText;
+    [SerializeField] protected Text enchantText;
 
     public event Action<BaseItemSlot> OnPointerEnterEvent;
     public event Action<BaseItemSlot> OnPointerExitEvent;
@@ -65,6 +66,27 @@ public class BaseItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
         }
     }
 
+    private int _enchant;
+    public int Enchant
+    {
+        get { return _enchant; }
+        set
+        {
+            _enchant = value;
+            if (_enchant < 0) _enchant = 0;
+ //           if (_enchant == 0 && Item != null) Item = null;
+
+            if(enchantText != null)
+            {
+                enchantText.enabled = _item != null && _enchant > 1;
+                if (enchantText.enabled)
+                {
+                    enchantText.text = "+" + _enchant.ToString();
+                }
+            }
+        }
+    }
+
     public virtual bool CanAddStack(Item item, int amount = 1)
     {
         return Item != null && Item.ID == item.ID;
@@ -83,8 +105,12 @@ public class BaseItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
         if (amountText == null)
             amountText = GetComponentInChildren<Text>();
 
+        if (enchantText == null)
+            enchantText = GetComponentInChildren<Text>();
+
         Item = _item;
         Amount = _amount;
+        Enchant = _enchant;
     }
 
     protected virtual void OnDisable()

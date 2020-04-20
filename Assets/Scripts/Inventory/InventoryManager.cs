@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,61 +31,72 @@ public class ItemContainerSaveData
 
 public class InventoryManager : MonoBehaviour
 {
+    public static InventoryManager Instance { get; private set; }
+
     public ItemDatabase itemDatabase;
 
     private const string InventoryFileName = "Inventory";
     private const string EquipmentFileName = "Equipment";
+    public ArrayList itemsList;
 
     private void Start()
     {
+        Instance = this;
+        itemsList = new ArrayList();
+
         itemDatabase = Resources.Load<ItemDatabase>("Item Database");
         if (itemDatabase == null)
             Debug.Log("I dont find Item Database in Resources folder.");
+
+
+    }
+
+
+    public void ItemsList(ArrayList invList)
+    {
+        foreach(InventoryHolder inventoryHolder in invList)
+        {
+            inventoryHolder.GetItemId();
+            inventoryHolder.GetEquiped();
+            inventoryHolder.GetAmount();
+            inventoryHolder.GetEnchant();
+            itemsList.Add(inventoryHolder);
+        }
     }
 
     public void LoadInventory(Character character)
     {
- //       ItemSlot itemSlot1 = character.Inventory.ItemSlots[0];
-//        itemSlot1.Item = itemDatabase.GetItemId(1);
-//       itemSlot1.Amount = 1;
-
-
-
-
-
-        // TODO: ItemContainerSaveData savedSlots = ItemSaveIO.LoadItems(InventoryFileName);
-        ItemContainerSaveData savedSlots = null; // REMOVE after TODO
-        if (savedSlots == null) return;
-
         character.Inventory.Clear();
 
-        for (int i = 0; i < savedSlots.SavedSlots.Length; i++)
+        int _slot = 0;
+        foreach(InventoryHolder inventoryHolder in itemsList)
         {
-            ItemSlot itemSlot = character.Inventory.ItemSlots[i];
-            ItemSlotSaveData savedSlot = savedSlots.SavedSlots[i];
+            ItemSlot itemSlot = character.Inventory.ItemSlots[_slot];
+            itemSlot.Item = itemDatabase.GetItemId(inventoryHolder.GetItemId());
+            itemSlot.Amount = inventoryHolder.GetAmount();
+            itemSlot.Enchant = inventoryHolder.GetEnchant();
+            if(inventoryHolder.GetEquiped() == 1)
+            {
+                character.Equip((EquippableItem)itemSlot.Item);
+            }
+            _slot++;
+        }
 
-            if(savedSlot == null)
-            {
-                itemSlot.Item = null;
-                itemSlot.Amount = 0;
-            }
-            else
-            {
-                itemSlot.Item = itemDatabase.GetItemCopy(savedSlot.ItemID);
-                itemSlot.Amount = savedSlot.Amount;
-            }
+        // Add Chest Reward for Test 20 x ItemId = 1000;
+        for (int i = 0; i < 20; i++)
+        {
+            character.Inventory.AddItem(itemDatabase.GetItemId(1000));
         }
     }
 
     public void LoadEquipment(Character character)
     {
-//        Item item1 = itemDatabase.GetItemId(2);
-        
-        character.Inventory.AddItem(itemDatabase.GetItemId(1));
-        character.Inventory.AddItem(itemDatabase.GetItemId(2));
-        character.Inventory.AddItem(itemDatabase.GetItemId(3));
-        character.Inventory.AddItem(itemDatabase.GetItemId(4));
-        character.Inventory.AddItem(itemDatabase.GetItemId(5));
+        //        Item item1 = itemDatabase.GetItemId(2);
+        //        character.Inventory.AddItem(itemDatabase.GetItemId(1));
+        //        character.Inventory.AddItem(itemDatabase.GetItemId(2));
+        //        character.Inventory.AddItem(itemDatabase.GetItemId(3));
+        //        character.Inventory.AddItem(itemDatabase.GetItemId(4));
+        //        character.Inventory.AddItem(itemDatabase.GetItemId(5));
 
 
         // TODO ItemContainerSaveData savedSlots = ItemSaveIO.LoadItems(EquipmentFileName);

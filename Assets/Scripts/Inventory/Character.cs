@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class Character : MonoBehaviour
 {
+    public static Character Instance { get; private set; }
     public int Health = 50;
 
     [Header("Stats")]
@@ -23,6 +24,7 @@ public class Character : MonoBehaviour
     [SerializeField] Image draggableItem;
     [SerializeField] InventoryManager inventoryManager;
     private BaseItemSlot dragItemSlot;
+    public DialogWindow dialogWindow;
 
     private void OnValidate()
     {
@@ -32,6 +34,8 @@ public class Character : MonoBehaviour
 
     private void Start()
     {
+        Instance = this;
+
         statPanel.SetStats(Strength, Agility, Intelligence, Vitality);
         statPanel.UpdateStatValues();
 
@@ -169,12 +173,15 @@ public class Character : MonoBehaviour
 
         Item draggedItem = dragItemSlot.Item;
         int draggedItemAmount = dragItemSlot.Amount;
+        int draggedItemEnchant = dragItemSlot.Enchant;
 
         dragItemSlot.Item = dropItemSlot.Item;
         dragItemSlot.Amount = dropItemSlot.Amount;
+        dragItemSlot.Enchant = dropItemSlot.Enchant;
 
         dropItemSlot.Item = draggedItem;
         dropItemSlot.Amount = draggedItemAmount;
+        dropItemSlot.Enchant = draggedItemEnchant;
     }
 
     private void AddStacks(BaseItemSlot dropItemSlot)

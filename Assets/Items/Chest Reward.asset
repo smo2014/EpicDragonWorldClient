@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4918639489ffe64090b6c29ea78755a, type: 3}
+  m_Name: Chest Reward
+  m_EditorClassIdentifier: 
+  id: 2167b11623fcd5446a8d7850d56efd52
+  itemId: 1000
+  ItemName: Chest Reward
+  Icon: {fileID: 21300000, guid: 1c96c0e751dd3654899176a145b056da, type: 3}
+  MaximumStacks: 100
+  IsConsumable: 1
+  Effects:
+  - {fileID: 11400000, guid: cff924e649f849149955a8c3e7147ea0, type: 2}

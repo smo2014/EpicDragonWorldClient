@@ -1,9 +1,7 @@
 ﻿using System.Collections;
-using UnityEngine;
 
 public class CharacterInventoryResult
 {
-
     public static void Notify(ReceivablePacket packet)
     {
         // Read Data
@@ -19,10 +17,8 @@ public class CharacterInventoryResult
 
             InventoryHolder itemData = new InventoryHolder(itemID, equiped, amount,enchant);
             itemList.Add(itemData);
-
-            // Inventory.Instance.AddItemInventory(itemID);
         }
-//        Inventory.Instance.ItemList(itemList);
+        InventoryManager.Instance.ItemsList(itemList);
     }
 
 }

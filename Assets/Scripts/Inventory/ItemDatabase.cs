@@ -36,8 +36,11 @@ public class ItemDatabase : ScriptableObject
 			}
 		}
 		return null;
+	}
 
-
+	public int Count()
+	{
+		return items.Length;
 	}
 
 #if UNITY_EDITOR

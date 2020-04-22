@@ -76,8 +76,10 @@ public class Character : MonoBehaviour
 
     private void InventoryRightClick(BaseItemSlot itemSlot)
     {
-        if(itemSlot.Item is EquippableItem)
+        dragItemSlot = itemSlot;
+        if (itemSlot.Item is EquippableItem)
         {
+            dragItemSlot.Enchant = itemSlot.Enchant;
             Equip((EquippableItem)itemSlot.Item);
         }
         else if(itemSlot.Item is UsableItem)
@@ -146,7 +148,6 @@ public class Character : MonoBehaviour
         {
             AddStacks(dropItemSlot);
         }
-
         if(dropItemSlot.CanReceiveItem(dragItemSlot.Item) && dragItemSlot.CanReceiveItem(dropItemSlot.Item))
         {
             SwapItems(dropItemSlot);
@@ -195,9 +196,11 @@ public class Character : MonoBehaviour
 
     public void Equip(EquippableItem item)
     {
+        item.EnchantLvl = dragItemSlot.Enchant;
         if (Inventory.RemoveItem(item))
         {
             EquippableItem previousItem;
+
             if(EquipmentPanel.AddItem(item, out previousItem))
             {
                 if(previousItem != null)
@@ -206,6 +209,7 @@ public class Character : MonoBehaviour
                     previousItem.Unequip(this);
                     statPanel.UpdateStatValues();
                 }
+
                 item.Equip(this);
                 CharacterManager.Instance.EquipItem(WorldManager.Instance.activeCharacter, item.itemId);
                 statPanel.UpdateStatValues();

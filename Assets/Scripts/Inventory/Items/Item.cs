@@ -45,4 +45,9 @@ public class Item : ScriptableObject
     {
         return "";
     }
+
+    public virtual int GetEnchant()
+    {
+        return 0;
+    }
 }

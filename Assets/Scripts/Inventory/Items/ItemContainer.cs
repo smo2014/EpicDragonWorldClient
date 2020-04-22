@@ -61,6 +61,7 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
 			{
 				ItemSlots[i].Item = item;
 				ItemSlots[i].Amount++;
+				ItemSlots[i].Enchant = item.GetEnchant();
 				return true;
 			}
 		}
@@ -71,6 +72,7 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
 			{
 				ItemSlots[i].Item = item;
 				ItemSlots[i].Amount++;
+				ItemSlots[i].Enchant = item.GetEnchant();
 				return true;
 			}
 		}
@@ -84,6 +86,7 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
 			if (ItemSlots[i].Item == item)
 			{
 				ItemSlots[i].Amount--;
+				ItemSlots[i].Enchant = item.GetEnchant();
 				return true;
 			}
 		}
@@ -98,6 +101,7 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
 			if (item != null && item.ID == itemID)
 			{
 				ItemSlots[i].Amount--;
+				ItemSlots[i].Enchant = item.GetEnchant();
 				return item;
 			}
 		}
@@ -128,7 +132,7 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
                 ItemSlots[i].Item.Destroy();
             }
             ItemSlots[i].Item = null;
-            ItemSlots[i].Amount = 0;
+			ItemSlots[i].Amount = 0;
         }
     }
 }

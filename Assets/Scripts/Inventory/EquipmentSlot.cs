@@ -13,6 +13,7 @@
         if (item == null) return true;
 
         EquippableItem equippableItem = item as EquippableItem;
+//        equippableItem.EnchantLvl = item.GetEnchant();
         return equippableItem != null && equippableItem.EquipmentType == EquipmentType;
     }
 }

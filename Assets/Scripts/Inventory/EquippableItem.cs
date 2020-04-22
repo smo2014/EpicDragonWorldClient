@@ -43,6 +43,11 @@ public class EquippableItem : Item
         Destroy();
     }
 
+    public override int GetEnchant()
+    {
+        return EnchantLvl;
+    }
+
     public void Equip(Character c)
     {
         if (Strength != 0)

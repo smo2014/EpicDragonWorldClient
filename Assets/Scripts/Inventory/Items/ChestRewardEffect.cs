@@ -1,13 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 [CreateAssetMenu(menuName = "Items/Effects/Chest Reward")]
 public class ChestRewardEffect : UsableItemEffect
 {
-
-
     public override void ExecuteEffect(UsableItem parentItem, Character character)
     {
         ItemDatabase db = Inventory.Instance.itemDatabase;
+        
         Item item = db.GetItemId(Random.Range(1, db.Count()));
 
         character.Inventory.AddItem(item);

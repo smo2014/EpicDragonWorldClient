@@ -42,6 +42,7 @@ public class EquipmentPanel : MonoBehaviour
                 previousItem = (EquippableItem)EquipmentSlots[i].Item;
                 EquipmentSlots[i].Item = item;
                 EquipmentSlots[i].Amount = 1;
+                EquipmentSlots[i].Enchant = item.GetEnchant();
                 return true;
             }
         }
@@ -57,6 +58,7 @@ public class EquipmentPanel : MonoBehaviour
             {
                 EquipmentSlots[i].Item = null;
                 EquipmentSlots[i].Amount = 0;
+                EquipmentSlots[i].Enchant = 0;
                 return true;
             }
         }

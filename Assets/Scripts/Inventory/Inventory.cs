@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Inventory : ItemContainer
 {
@@ -16,7 +15,6 @@ public class Inventory : ItemContainer
         if (!Application.isPlaying)
         {
         }
-
     }
 
     protected override void Awake()

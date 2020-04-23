@@ -47,10 +47,7 @@ public class InventoryManager : MonoBehaviour
         itemDatabase = Resources.Load<ItemDatabase>("Item Database");
         if (itemDatabase == null)
             Debug.Log("I dont find Item Database in Resources folder.");
-
-
     }
-
 
     public void ItemsList(ArrayList invList)
     {
@@ -91,14 +88,6 @@ public class InventoryManager : MonoBehaviour
 
     public void LoadEquipment(Character character)
     {
-        //        Item item1 = itemDatabase.GetItemId(2);
-        //        character.Inventory.AddItem(itemDatabase.GetItemId(1));
-        //        character.Inventory.AddItem(itemDatabase.GetItemId(2));
-        //        character.Inventory.AddItem(itemDatabase.GetItemId(3));
-        //        character.Inventory.AddItem(itemDatabase.GetItemId(4));
-        //        character.Inventory.AddItem(itemDatabase.GetItemId(5));
-
-
         // TODO ItemContainerSaveData savedSlots = ItemSaveIO.LoadItems(EquipmentFileName);
         ItemContainerSaveData savedSlots = null; //REMOVE after TODO
         if (savedSlots == null) return;
@@ -145,7 +134,6 @@ public class InventoryManager : MonoBehaviour
                 Debug.Log("Save to database: " + itemSlot.Item.itemId + " | " + itemSlot.Amount + " | equiped or not |" + " enchant lvl");
             }
         }
-        Debug.Log("TODO: Add in BaseItemSlot Enchant");
 
         Debug.Log("Inventory Manager save data TODO");
     }

@@ -58,6 +58,9 @@ public class RecievablePacketHandler
             case 13:
                 CharacterInventoryResult.Notify(packet);
                 break;
+            case 14: 
+                InventoryUpdateResult.Notify(packet);
+                break;
         }
     }
 }

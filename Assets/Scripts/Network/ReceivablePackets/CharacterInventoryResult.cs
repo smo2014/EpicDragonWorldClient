@@ -18,7 +18,8 @@ public class CharacterInventoryResult
             InventoryHolder itemData = new InventoryHolder(itemID, equiped, amount,enchant);
             itemList.Add(itemData);
         }
-        InventoryManager.Instance.ItemsList(itemList);
+        InventoryTest.instance.InventoryList(itemList);
+//        InventoryManager.Instance.ItemsList(itemList);
     }
 
 }

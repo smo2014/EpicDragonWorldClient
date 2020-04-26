@@ -23,6 +23,7 @@ public class Character : MonoBehaviour
     [SerializeField] ItemTooltip itemTooltip;
     [SerializeField] Image draggableItem;
     [SerializeField] InventoryManager inventoryManager;
+    [SerializeField] InventoryTest invTest;
     private BaseItemSlot dragItemSlot;
     public DialogWindow dialogWindow;
 
@@ -64,14 +65,15 @@ public class Character : MonoBehaviour
         Inventory.OnDropEvent += Drop;
         EquipmentPanel.OnDropEvent += Drop;
 
-        inventoryManager.LoadEquipment(this);
-        inventoryManager.LoadInventory(this);
+        //        inventoryManager.LoadEquipment(this);
+        //        inventoryManager.LoadInventory(this);
+        invTest.LoadInventory(this);
     }
 
     private void OnDestroy()
     {
-        inventoryManager.SaveEquipment(this);
-        inventoryManager.SaveInventory(this);
+//        inventoryManager.SaveEquipment(this);
+//        inventoryManager.SaveInventory(this);
     }
 
     private void InventoryRightClick(BaseItemSlot itemSlot)

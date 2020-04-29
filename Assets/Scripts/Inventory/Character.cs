@@ -66,8 +66,8 @@ public class Character : MonoBehaviour
         EquipmentPanel.OnDropEvent += Drop;
 
         //        inventoryManager.LoadEquipment(this);
-        //        inventoryManager.LoadInventory(this);
-        invTest.LoadInventory(this);
+        inventoryManager.LoadInventory(this);
+        //invTest.LoadInventory(this);
     }
 
     private void OnDestroy()

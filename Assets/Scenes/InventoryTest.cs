@@ -3,71 +3,40 @@ using UnityEngine;
 
 public class InventoryTest : MonoBehaviour
 {
-    public static InventoryTest instance {get;set;}
     public static int getItemChange { get; set; }
     public static int itemId { get; set; }
     public static int equipped { get; set; }
     public static int count { get; set; }
     public static int enchantLvl { get; set; }
-    public ArrayList itemsList;
-    Item[] items;
 
-    private void Start()
-    {
-        instance = this;
-        itemsList = new ArrayList();
 
-    }
-    
-    public void LoadInventory(Character character)
+    private void Update()
     {
-        character.Inventory.Clear();
-        int _slot = 0;
-        foreach(InventoryHolder inventoryHolder in itemsList)
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ItemSlot itemSlot = character.Inventory.ItemSlots[_slot];
-            itemSlot.Item = GetItemId(inventoryHolder.GetItemId());
-            itemSlot.Amount = inventoryHolder.GetAmount();
-            itemSlot.Enchant = inventoryHolder.GetEnchant();
+            getItemChange = 1;
+            itemId = 555;
+            equipped = 0;
+            enchantLvl = 0;
+            NetworkManager.ChannelSend(new InventoryUpdateRequest(MainManager.Instance.selectedCharacterData.GetName()));
         }
-        _slot++;
-    }
 
-
-    // remove GetCopy in future...
-    public Item GetItemId(int id)
-    {
-        foreach (Item item in items)
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            return item != null ? item.GetCopy() : null;
+            getItemChange = 2;
+            itemId = 555;
+            equipped = 0;
+            enchantLvl = 0;
+            NetworkManager.ChannelSend(new InventoryUpdateRequest(MainManager.Instance.selectedCharacterData.GetName()));
         }
-        return null;
-    }
-
-
-
-    public void InventoryList(ArrayList invList)
-    {
-        foreach(InventoryHolder inventoryHolder in invList)
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            inventoryHolder.GetItemId();
-            inventoryHolder.GetEquiped();
-            inventoryHolder.GetAmount();
-            inventoryHolder.GetEnchant();
-            itemsList.Add(inventoryHolder);
-
-            
+            getItemChange = 3;
+            itemId = 555;
+            equipped = 0;
+            enchantLvl = 0;
+            NetworkManager.ChannelSend(new InventoryUpdateRequest(MainManager.Instance.selectedCharacterData.GetName()));
         }
-    }
-
-    public void ItemAddTest()
-    {
-        getItemChange = 1;
-        itemId = 555;
-        equipped = 0;
-        enchantLvl = 0;
-        Debug.Log("Send packet");
-        NetworkManager.ChannelSend(new InventoryUpdateRequest(MainManager.Instance.selectedCharacterData.GetName()));
     }
 }
 

@@ -2,7 +2,7 @@
 {
     public CharacterInventoryRequest(string characterName)
     {
-        WriteShort(15); // Packet id.
+        WriteShort(14); // Packet id.
         WriteString(characterName);
     }
 }
